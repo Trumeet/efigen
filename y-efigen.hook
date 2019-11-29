@@ -1,0 +1,12 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = linux
+Target = systemd
+
+[Action]
+Description = Generating linux.efi
+When = PostTransaction
+Exec = /usr/bin/efigen
+Depends = binutils
