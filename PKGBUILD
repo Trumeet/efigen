@@ -16,6 +16,7 @@ source=(y-efigen.hook
 md5sums=('d894a704527d7ac407160f8d67837069'
          '36baf021eac6ef4fb40ad1fc3cb292b5'
          '47994b7df6fe434b3c680969189bc171')
+backup=('etc/efigen/efigen.config')
 
 package() {
     install -m755 -d "${pkgdir}/etc/pacman.d/hooks/"
