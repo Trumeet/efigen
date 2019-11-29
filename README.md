@@ -54,6 +54,8 @@ For secure boot users, sign `/boot/linux.efi`.
 
 Get rid of bootloader: `sudo bootctl remove`.
 
+Set boot option: either `efibootmgr` (Sometimes break on my computer, idk why) or BIOS menu
+
 # Disclaimer
 
 I'm a total Linux beginner; this script may contain errors which will destory your boot partition. Use it with care, and feedbacks are always welcome.

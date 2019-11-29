@@ -10,3 +10,5 @@ Description = Generating linux.efi
 When = PostTransaction
 Exec = /usr/bin/efigen
 Depends = binutils
+Depends = bash
+Depends = systemd
