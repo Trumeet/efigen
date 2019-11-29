@@ -30,7 +30,7 @@ Default values and descriptions are stated in that file. The default config may 
 
 * Initrd: `/boot/initramfs-linux.img`, no microcode.
 
-* Kernel: '/boot/vmlinuz-linux'
+* Kernel: `/boot/vmlinuz-linux`
 
 * OS Release file: `/usr/lib/os-release`
 
@@ -45,6 +45,14 @@ If the default configuration does not satisfy your situation, you may need to ed
 ## How to use
 
 This includes a `pacman` hook, which will be executed after upgrading `linux` or `systemd` package.
+
+# Next Step
+
+Reinstall kernel to initiate the first generate: `sudo pacman -S linux`.
+
+For secure boot users, sign `/boot/linux.efi`.
+
+Get rid of bootloader: `sudo bootctl remove`.
 
 # Disclaimer
 
