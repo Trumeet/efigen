@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc=""
 arch=("any")
 url=
-license=('GPL')
+license=('GPL2')
 depends=("linux"
         "systemd"
         "binutils")
