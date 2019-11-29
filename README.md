@@ -38,6 +38,10 @@ Default values and descriptions are stated in that file. The default config may 
 
 * Temp initrd file: `./temp.img` (TODO: Pacman hooks may not be able to write `/tmp`?)
 
+* Output file: `/boot/linux.efi`
+
+* Stub file: `/usr/lib/systemd/boot/efi/linuxx64.efi.stub`
+
 * and requirements of this package.
 
 If the default configuration does not satisfy your situation, you may need to edit the configuration file yourself.
