@@ -64,6 +64,10 @@ Set boot option: either `efibootmgr` (Sometimes break on my computer, idk why) o
 
 I'm a total Linux beginner; this script may contain errors which will destory your boot partition. Use it with care, and feedbacks are always welcome.
 
+# Acknowledgements
+
+* [https://github.com/xdever/arch-efiboot](https://github.com/xdever/arch-efiboot)
+
 # License
 
 GPL v2
