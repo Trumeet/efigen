@@ -8,7 +8,8 @@ arch=("any")
 url=
 license=('GPL')
 depends=("linux"
-        "systemd")
+        "systemd"
+        "binutils")
 source=(y-efigen.hook
         efigen
         efigen.config)
