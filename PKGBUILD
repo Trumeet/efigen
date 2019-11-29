@@ -7,22 +7,21 @@ pkgdesc=""
 arch=("any")
 url="https://github.com/Trumeet/efigen"
 license=('GPL2')
-depends=("linux"
-        "systemd"
+depends=("systemd"
         "binutils")
 source=(99-efigen.hook
         efigen
-        efigen.config)
-md5sums=('d894a704527d7ac407160f8d67837069'
-         '36baf021eac6ef4fb40ad1fc3cb292b5'
-         '47994b7df6fe434b3c680969189bc171')
-backup=('etc/efigen/efigen.config')
+        linux.config)
+md5sums=('3696655e397201916b0c23fbbc5d3bbd'
+         '13805fb5bf05c729a7a9decf4fcf64b8'
+         '35b7be991eaffb22e67afe597b72596b')
+backup=('etc/efigen/linux.config')
 
 package() {
     install -m755 -d "${pkgdir}/usr/share/libalpm/hooks/"
-    install -m755 -d "${pkgdir}/usr/bin/"
+    install -m755 -d "${pkgdir}/usr/share/libalpm/scripts/"
     install -m755 -d "${pkgdir}/etc/efigen/"
     install -m644 "${srcdir}/99-efigen.hook" "${pkgdir}/usr/share/libalpm/hooks/"
-    install -m755 "${srcdir}/efigen" "${pkgdir}/usr/bin/"
-    install -m644 "${srcdir}/efigen.config" "${pkgdir}/etc/efigen"
+    install -m755 "${srcdir}/efigen" "${pkgdir}/usr/share/libalpm/scripts/"
+    install -m644 "${srcdir}/linux.config" "${pkgdir}/etc/efigen"
 }

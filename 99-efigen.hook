@@ -1,14 +1,14 @@
 [Trigger]
 Operation = Install
 Operation = Upgrade
-Type = Package
-Target = linux
-Target = systemd
+Type = Path
+Target = usr/lib/modules/*/vmlinuz
+Target = usr/lib/initcpio/*
 
 [Action]
 Description = Generating linux.efi
 When = PostTransaction
-Exec = /usr/bin/efigen
+Exec = /usr/share/libalpm/scripts/efigen
 Depends = binutils
 Depends = bash
 Depends = systemd

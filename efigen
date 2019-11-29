@@ -1,18 +1,28 @@
 #!/bin/bash
 set -e
-CMD_LINE_FILE=/etc/efigen/cmdline.txt
-OS_RELEASE_FILE=/usr/lib/os-release
-KERNEL=/boot/vmlinuz-linux
-INITRDS=/boot/initramfs-linux.img
-TEMP_INITRD_IMG=./temp.img
-STUB=/usr/lib/systemd/boot/efi/linuxx64.efi.stub
-OUTPUT=/boot/linux.efi
-source /etc/efigen/efigen.config
-cat $INITRDS > $TEMP_INITRD_IMG
-objcopy \
-    --add-section .osrel="$OS_RELEASE_FILE" --change-section-vma .osrel=0x20000 \
-    --add-section .cmdline="$CMD_LINE_FILE" --change-section-vma .cmdline=0x30000 \
-    --add-section .linux="$KERNEL" --change-section-vma .linux=0x40000 \
-    --add-section .initrd="$TEMP_INITRD_IMG" --change-section-vma .initrd=0x3000000 \
-    "$STUB" "$OUTPUT"
-rm $TEMP_INITRD_IMG
+SCRIPTPATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/$(basename "${BASH_SOURCE[0]}")"
+if [ -z "$1" ]
+then
+    find /etc/efigen -maxdepth 1 -type f -name "*.config" -exec $SCRIPTPATH {} \;
+else
+    echo "Generating efi executable using configuration $1"
+    CONFIG_NAME_FULL=$(basename $1)
+    CONFIG_NAME="${CONFIG_NAME_FULL%%.*}"
+
+    CMD_LINE_FILE=/etc/efigen/cmdline.txt
+    OS_RELEASE_FILE=/usr/lib/os-release
+    KERNEL=/boot/vmlinuz-$CONFIG_NAME
+    INITRDS=/boot/initramfs-$CONFIG_NAME.img
+    TEMP_INITRD_IMG=./temp.img
+    STUB=/usr/lib/systemd/boot/efi/linuxx64.efi.stub
+    OUTPUT=/boot/$CONFIG_NAME.efi
+    source $1
+    cat $INITRDS > $TEMP_INITRD_IMG
+    objcopy \
+        --add-section .osrel="$OS_RELEASE_FILE" --change-section-vma .osrel=0x20000 \
+        --add-section .cmdline="$CMD_LINE_FILE" --change-section-vma .cmdline=0x30000 \
+        --add-section .linux="$KERNEL" --change-section-vma .linux=0x40000 \
+        --add-section .initrd="$TEMP_INITRD_IMG" --change-section-vma .initrd=0x3000000 \
+        "$STUB" "$OUTPUT"
+    rm $TEMP_INITRD_IMG
+fi
