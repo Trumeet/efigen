@@ -12,9 +12,9 @@ depends=("linux"
 source=(y-efigen.hook
         efigen
         efigen.config)
-md5sums=('322af73ce8599c769d71abd0aabe5990'
-         'efbed9869cd119bb4ae4dd477970a7fc'
-         '3ed60a34c1aad61324e3f36645232e76')
+md5sums=('d894a704527d7ac407160f8d67837069'
+         '36baf021eac6ef4fb40ad1fc3cb292b5'
+         '95e901a4f4d9c06794141c07d0ce4687')
 
 package() {
     install -m755 -d "${pkgdir}/etc/pacman.d/hooks/"
