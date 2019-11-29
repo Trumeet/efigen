@@ -5,7 +5,7 @@ pkgver=1
 pkgrel=1
 pkgdesc=""
 arch=("any")
-url=
+url="https://github.com/Trumeet/efigen"
 license=('GPL2')
 depends=("linux"
         "systemd"
@@ -15,7 +15,7 @@ source=(y-efigen.hook
         efigen.config)
 md5sums=('d894a704527d7ac407160f8d67837069'
          '36baf021eac6ef4fb40ad1fc3cb292b5'
-         '95e901a4f4d9c06794141c07d0ce4687')
+         '47994b7df6fe434b3c680969189bc171')
 
 package() {
     install -m755 -d "${pkgdir}/etc/pacman.d/hooks/"
